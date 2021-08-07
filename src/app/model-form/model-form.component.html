@@ -1,7 +1,21 @@
 <div class="container">
     <form novalidate
         [formGroup]="myform">
-  
+        <div class="form-group"
+        [ngClass]="{
+         'has-danger': dropdownSelect.invalid && (dropdownSelect.dirty || dropdownSelect.touched),
+         'has-success': dropdownSelect.valid && (dropdownSelect.dirty || dropdownSelect.touched)
+    }">
+    <label>Title</label>
+      <select name="dropdown" id="dropdown" class="form-control" formControlName="dropdownSelect" required>
+        <option *ngFor="let i of selectOptions" [ngValue]="i" >{{i}}</option>
+      </select>
+    
+     <div class="form-control-feedback"
+          *ngIf="dropdownSelect.errors && (dropdownSelect.dirty || dropdownSelect.touched)">
+       <p *ngIf="dropdownSelect.errors.required">dropdownSelect is required</p>
+     </div>
+   </div>
     <fieldset formGroupName="name">
       <div class="form-group"
            [ngClass]="{
@@ -64,24 +78,157 @@
       -->
   
     </div>
-  
+
     <div class="form-group"
          [ngClass]="{
-          'has-danger': password.invalid && (password.dirty || password.touched),
-          'has-success': password.valid && (password.dirty || password.touched)
+          'has-danger': fax.invalid && (fax.dirty || fax.touched),
+          'has-success': fax.valid && (fax.dirty || fax.touched)
      }">
-      <label>Password</label>
-      <input type="password"
+      <label>fax</label>
+      <input type="text"
              class="form-control"
-             formControlName="password"
+             formControlName="fax"
              required>
       <div class="form-control-feedback"
-           *ngIf="password.errors && (password.dirty || password.touched)">
-        <p *ngIf="password.errors.required">Password is required</p>
-        <p *ngIf="password.errors.minlength">Password must be 8 characters long, we need another {{password.errors.minlength.requiredLength - password.errors.minlength.actualLength}} characters </p>
+           *ngIf="fax.errors && (fax.dirty || fax.touched)">
+        <p *ngIf="fax.errors.required">fax is required</p>
+        
       </div>
     </div>
   
+    <div class="form-group"
+         [ngClass]="{
+          'has-danger': address.invalid && (address.dirty || address.touched),
+          'has-success': address.valid && (address.dirty || address.touched)
+     }">
+      <label>Address</label>
+      <input type="address"
+             class="form-control"
+             formControlName="address"
+             required>
+      <div class="form-control-feedback"
+           *ngIf="address.errors && (address.dirty || address.touched)">
+        <p *ngIf="address.errors.required">address is required</p>
+      </div>
+    </div>
+
+
+    <div class="form-group"
+         [ngClass]="{
+          'has-danger': city.invalid && (city.dirty || city.touched),
+          'has-success': city.valid && (city.dirty || city.touched)
+     }">
+      <label>city</label>
+      <input type="text"
+             class="form-control"
+             formControlName="city"
+             required>
+      <div class="form-control-feedback"
+           *ngIf="city.errors && (city.dirty || city.touched)">
+        <p *ngIf="city.errors.required">city is required</p>
+      </div>
+    </div>
+
+    <div class="form-group"
+         [ngClass]="{
+          'has-danger': state.invalid && (state.dirty || state.touched),
+          'has-success': state.valid && (state.dirty || state.touched)
+     }">
+      <label>state</label>
+      <input type="text"
+             class="form-control"
+             formControlName="state"
+             required>
+      <div class="form-control-feedback"
+           *ngIf="state.errors && (state.dirty || state.touched)">
+        <p *ngIf="state.errors.required">state is required</p>
+      </div>
+    </div>
+
+    <div class="form-group"
+         [ngClass]="{
+          'has-danger': country.invalid && (country.dirty || country.touched),
+          'has-success': country.valid && (country.dirty || country.touched)
+     }">
+      <label>country</label>
+      <input type="text"
+             class="form-control"
+             formControlName="country"
+             required>
+      <div class="form-control-feedback"
+           *ngIf="country.errors && (country.dirty || country.touched)">
+        <p *ngIf="country.errors.required">country is required</p>
+      </div>
+    </div>
+
+    <div class="form-group"
+         [ngClass]="{
+          'has-danger': postalCode.invalid && (postalCode.dirty || postalCode.touched),
+          'has-success': postalCode.valid && (postalCode.dirty || postalCode.touched)
+     }">
+      <label>postalCode</label>
+      <input type="tel"
+             class="form-control"
+             formControlName="postalCode"
+             required>
+      <div class="form-control-feedback"
+           *ngIf="postalCode.errors && (postalCode.dirty || postalCode.touched)">
+        <p *ngIf="postalCode.errors.required">postalCode is required</p>
+        <p *ngIf="postalCode.errors.minlength || postalCode.errors.maxlength">The length of the postal code should be 6</p>
+      </div>
+    </div>
+
+    <div class="form-group"
+         [ngClass]="{
+          'has-danger': phone.invalid && (phone.dirty || phone.touched),
+          'has-success': phone.valid && (phone.dirty || phone.touched)
+     }">
+      <label>phone</label>
+      <input type="tel"
+             class="form-control"
+             formControlName="phone"
+             required>
+      <div class="form-control-feedback"
+           *ngIf="phone.errors && (phone.dirty || phone.touched)">
+        <p *ngIf="phone.errors.required">phone is required</p>
+        <p *ngIf="phone.errors.minlength || phone.errors.maxlength">The length of the phone number should be 10 to 14</p>
+      </div>
+    </div>
+
+
+    <div class="form-group"
+         [ngClass]="{
+          'has-danger': payment.invalid && (payment.dirty || payment.touched),
+          'has-success': payment.valid && (payment.dirty || payment.touched)
+     }">
+      <label>payment</label>
+      <input type="text"
+             class="form-control"
+             formControlName="payment"
+             required>
+      <div class="form-control-feedback"
+           *ngIf="payment.errors && (payment.dirty || payment.touched)">
+        <p *ngIf="payment.errors.required">payment is required</p>
+      </div>
+    </div>
+
+    <div class="form-group"
+         [ngClass]="{
+          'has-danger': requirement.invalid && (requirement.dirty || requirement.touched),
+          'has-success': requirement.valid && (requirement.dirty || requirement.touched)
+     }">
+      <label>requirement</label>
+      <input type="text"
+             class="form-control"
+             formControlName="requirement"
+             required>
+      <div class="form-control-feedback"
+           *ngIf="requirement.errors && (requirement.dirty || requirement.touched)">
+        <p *ngIf="requirement.errors.required">requirement is required</p>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-lg btn-block" (click)="onRegister()" [disabled]="myform.invalid" >Submit</button>
     <!--
       <pre>{{ password.errors | json }}</pre>
     -->
